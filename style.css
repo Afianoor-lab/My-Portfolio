@@ -194,7 +194,7 @@ h2{
 #projects {
   opacity: 1 !important;
   transform: none !important;
-  overflow: hidden; /* Sided se ekstra cards ko chupane ke liye */
+  overflow: hidden; /* Side se extra cards ko chupane ke liye */
   position: relative;
   width: 100%;
 }
@@ -208,7 +208,7 @@ h2{
   animation: marqueeScroll 20s linear infinite; /* Chalti hui patti animation */
 }
 
-/* Cursor le jane par animation ruk jaye taky click karna aasan ho */
+/* Cursor le jane par animation ruk jaye */
 .project-grid:hover {
   animation-play-state: paused;
 }
@@ -353,32 +353,6 @@ footer{
   transform:translateY(0);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .about-grid{
-    grid-template-columns:1fr;
-  }
-  .hero h1{
-    font-size:34px;
-  }
-  .nav-links{
-    display:none;
-    position:absolute;
-    top:70px;
-    right:30px;
-    background:var(--glass-bg);
-    flex-direction:column;
-    padding:20px;
-    border-radius:12px;
-  }
-  .nav-links.show{
-    display:flex;
-  }
-  .hamburger{
-    display:flex;
-  }
-}
-
 /* UTILITIES */
 .social-icons {
   display: flex;
@@ -483,7 +457,7 @@ footer{
   padding: 80px 30px;
   max-width: 100%;
   margin: auto;
-  overflow: hidden; /* Sided se extra cards chupane ke liye */
+  overflow: hidden; /* Side se extra cards chupane ke liye */
   position: relative;
 }
 
@@ -552,18 +526,44 @@ footer{
 
 /* Neon Border Wrapper & Pic */
 .neon-border-wrapper {
-    width: 220px; height: 220px; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 50%;
-    background: linear-gradient(135deg, #00BFFF 0%, #FF1493 100%); padding: 5px; box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(255, 20, 147, 0.3);
-    animation: floatPic 3s ease-in-out infinite;
+  width: 220px; height: 220px; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+  background: linear-gradient(135deg, #00BFFF 0%, #FF1493 100%); padding: 5px; box-shadow: 0 0 20px rgba(0, 191, 255, 0.5), 0 0 40px rgba(255, 20, 147, 0.3);
+  animation: floatPic 3s ease-in-out infinite;
 }
 .profile-pic { width: 210px; height: 210px; border-radius: 50%; object-fit: cover; display: block; border: 4px solid #0f172a; }
 
 @keyframes floatPic {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
 .hero-content { text-align: center; }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+  .hero h1{
+    font-size:34px;
+  }
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:70px;
+    right:30px;
+    background:var(--glass-bg);
+    flex-direction:column;
+    padding:20px;
+    border-radius:12px;
+  }
+  .nav-links.show{
+    display:flex;
+  }
+  .hamburger{
+    display:flex;
+  }
+}
 
 @media(max-width:768px){
   .cert-card{
