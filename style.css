@@ -1317,22 +1317,6 @@ nav {
   animation: orbitSpin 18s linear infinite;
 }
 
-#home .neon-border-wrapper::after {
-  position: absolute;
-  right: -25px;
-  bottom: 20px;
-  padding: 9px 13px;
-  border: 1px solid rgba(173, 139, 255, 0.45);
-  border-radius: 999px;
-  background: rgba(14, 19, 38, 0.92);
-  box-shadow: 0 0 24px rgba(173, 139, 255, 0.22);
-  color: #e8dcff;
-  content: 'WEB  ·  AI  ·  MOBILE';
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
 #about,
 #introduction {
   position: relative;
