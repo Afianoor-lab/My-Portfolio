@@ -1267,19 +1267,72 @@ footer {
   }
 }
 
+.professional-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+  min-width: 0;
+}
+
+#experience.experience-section {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  scroll-margin-top: 96px;
+  text-align: left;
+}
+
+#experience .section-intro {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+#experience .section-heading {
+  text-align: left;
+}
+
+#experience .section-heading::after {
+  left: 0;
+  transform: none;
+}
+
+#experience .section-lead {
+  margin: 8px 0 0;
+}
+
+#experience .experience-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+
+#experience .experience-card {
+  padding: 22px;
+}
+
+@media (max-width: 760px) {
+  .professional-panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .intro-expertise-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: clamp(32px, 5vw, 68px);
+  gap: 42px;
   max-width: 1240px;
   padding: 84px 28px 100px;
-  text-align: left;
+  text-align: center;
 }
 
 .intro-copy {
   min-width: 0;
-  padding-top: 12px;
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding-top: 0;
 }
 
 .intro-eyebrow {
@@ -1296,12 +1349,12 @@ footer {
   padding-bottom: 20px;
   font-size: clamp(38px, 5vw, 62px);
   line-height: 1.12;
-  text-align: left;
+  text-align: center;
 }
 
 #introduction .intro-title::after {
-  left: 0;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #introduction .intro-highlight {
@@ -1328,7 +1381,7 @@ footer {
   margin: 0;
   padding: 0;
   scroll-margin-top: 96px;
-  text-align: left;
+  text-align: center;
 }
 
 #skills.expertise-panel .section-intro {
@@ -1813,5 +1866,66 @@ nav {
   #skills .skill-group,
   #skills .skill-group:nth-child(even) {
     animation: none;
+  }
+}
+
+#introduction.intro-expertise-layout {
+  max-width: 1240px;
+  padding: 84px 28px 100px;
+}
+
+#introduction.intro-expertise-layout .intro-highlight {
+  position: relative;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(173, 139, 255, 0.19), transparent 48%) padding-box,
+    radial-gradient(ellipse at 0% 100%, rgba(35, 229, 222, 0.1), transparent 48%) padding-box,
+    linear-gradient(145deg, rgba(18, 27, 51, 0.98), rgba(10, 20, 38, 0.98)) padding-box,
+    linear-gradient(125deg, rgba(117, 243, 224, 0.72), rgba(121, 184, 255, 0.18), rgba(173, 139, 255, 0.72), rgba(255, 131, 199, 0.58)) border-box;
+  background-size: auto, auto, auto, 260% 260%;
+  background-position: center, center, center, 0% 50%;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24), 0 0 24px rgba(173, 139, 255, 0.09), inset 0 1px rgba(255, 255, 255, 0.06);
+  color: #dce6f2;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.85;
+  text-align: center;
+  animation: topPanelFlow 9s ease-in-out infinite;
+}
+
+#introduction.intro-expertise-layout .intro-highlight::before,
+#introduction.intro-expertise-layout .intro-highlight::after {
+  position: absolute;
+  content: '';
+  pointer-events: none;
+}
+
+#introduction.intro-expertise-layout .intro-highlight::before {
+  top: 18%;
+  bottom: 18%;
+  left: 0;
+  width: 3px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, var(--primary), var(--blue), var(--violet), var(--pink));
+  box-shadow: 0 0 20px rgba(173, 139, 255, 0.45);
+}
+
+#introduction.intro-expertise-layout .intro-highlight::after {
+  top: -50%;
+  left: -60%;
+  width: 32%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(225, 233, 255, 0.09), transparent);
+  transform: rotate(22deg);
+  animation: introSheen 9s ease-in-out infinite;
+}
+
+@media (max-width: 760px) {
+  #introduction.intro-expertise-layout {
+    padding: 64px 21px 76px;
   }
 }
