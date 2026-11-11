@@ -1156,21 +1156,6 @@ footer {
     transition-duration: 0.01ms !important;
   }
 
-  #projects,
-  #certifications {
-    overflow-x: auto;
-  }
-
-  .project-grid,
-  .cert-grid {
-    animation: none !important;
-    transform: none !important;
-  }
-
-  .project-group[aria-hidden="true"],
-  .cert-group[aria-hidden="true"] {
-    display: none;
-  }
 }
 
 #introduction .intro-title {
@@ -1201,18 +1186,25 @@ footer {
   position: relative;
   overflow: hidden;
   padding: 28px;
-  border: 1px solid rgba(173, 139, 255, 0.3);
+  border: 1px solid transparent;
   border-radius: 20px;
   background:
-    radial-gradient(ellipse at 100% 0%, rgba(173, 139, 255, 0.16), transparent 52%),
-    linear-gradient(145deg, rgba(18, 27, 51, 0.98), rgba(10, 20, 38, 0.98));
+    radial-gradient(ellipse at 100% 0%, rgba(173, 139, 255, 0.16), transparent 52%) padding-box,
+    linear-gradient(145deg, rgba(18, 27, 51, 0.98), rgba(10, 20, 38, 0.98)) padding-box,
+    linear-gradient(125deg, rgba(117, 243, 224, 0.68), rgba(121, 184, 255, 0.18), rgba(173, 139, 255, 0.68), rgba(255, 131, 199, 0.5)) border-box;
+  background-size: auto, auto, 260% 260%;
+  background-position: center, center, 0% 50%;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.06);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  animation: experienceBorderFlow 9s ease-in-out infinite;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.experience-card:nth-child(even) {
+  animation-delay: -4.5s;
 }
 
 .experience-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(117, 243, 224, 0.65);
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.28), 0 0 24px rgba(117, 243, 224, 0.1);
 }
 
@@ -1240,6 +1232,16 @@ footer {
 .experience-company {
   color: #d3deeb;
   font-size: 15px;
+}
+
+@keyframes experienceBorderFlow {
+  0%,
+  100% {
+    background-position: center, center, 0% 50%;
+  }
+  50% {
+    background-position: center, center, 100% 50%;
+  }
 }
 
 @media (max-width: 760px) {
@@ -1869,12 +1871,12 @@ nav {
   }
 }
 
-#introduction.intro-expertise-layout {
+#introduction.intro-experience-layout {
   max-width: 1240px;
   padding: 84px 28px 100px;
 }
 
-#introduction.intro-expertise-layout .intro-highlight {
+#introduction.intro-experience-layout .intro-highlight {
   position: relative;
   overflow: hidden;
   max-width: 900px;
@@ -1897,14 +1899,14 @@ nav {
   animation: topPanelFlow 9s ease-in-out infinite;
 }
 
-#introduction.intro-expertise-layout .intro-highlight::before,
-#introduction.intro-expertise-layout .intro-highlight::after {
+#introduction.intro-experience-layout .intro-highlight::before,
+#introduction.intro-experience-layout .intro-highlight::after {
   position: absolute;
   content: '';
   pointer-events: none;
 }
 
-#introduction.intro-expertise-layout .intro-highlight::before {
+#introduction.intro-experience-layout .intro-highlight::before {
   top: 18%;
   bottom: 18%;
   left: 0;
@@ -1914,7 +1916,7 @@ nav {
   box-shadow: 0 0 20px rgba(173, 139, 255, 0.45);
 }
 
-#introduction.intro-expertise-layout .intro-highlight::after {
+#introduction.intro-experience-layout .intro-highlight::after {
   top: -50%;
   left: -60%;
   width: 32%;
@@ -1924,8 +1926,201 @@ nav {
   animation: introSheen 9s ease-in-out infinite;
 }
 
+.intro-experience-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(24px, 4vw, 48px);
+  max-width: 1240px;
+  padding: 84px 28px 54px;
+  text-align: left;
+}
+
+.intro-experience-layout .intro-copy {
+  width: 100%;
+  margin: 0;
+}
+
+#introduction.intro-experience-layout .intro-title {
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+#introduction.intro-experience-layout .intro-title::after {
+  left: 0;
+  transform: none;
+}
+
+#introduction.intro-experience-layout .intro-highlight {
+  max-width: none;
+  height: auto;
+  margin: 0;
+  text-align: left;
+}
+
+#experience.experience-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#experience .section-intro {
+  margin-bottom: 0;
+}
+
+#experience .experience-grid {
+  flex: 1;
+  align-content: center;
+}
+
+.expertise-section {
+  width: 100%;
+  max-width: none;
+  padding: 42px 0 84px;
+  overflow: hidden;
+}
+
+.expertise-section > .section-intro {
+  margin: 0 20px 20px;
+}
+
+.expertise-grid {
+  display: flex;
+  width: max-content;
+  margin-top: 24px;
+  padding: 6px 0 20px;
+  animation: marqueeScroll 32s linear infinite reverse;
+}
+
+.expertise-grid:hover,
+.expertise-grid:focus-within {
+  animation-play-state: paused;
+}
+
+.expertise-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: stretch;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+.expertise-card {
+  display: inline-flex;
+  min-height: 66px;
+  align-items: center;
+  gap: 11px;
+  padding: 14px 20px;
+  border: 1px solid rgba(173, 139, 255, 0.3);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(173, 139, 255, 0.16), transparent 58%),
+    linear-gradient(155deg, rgba(21, 28, 50, 0.98), rgba(10, 18, 34, 0.99));
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.05);
+  color: #e2ebf5;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.expertise-card i {
+  color: var(--primary);
+  font-size: 16px;
+}
+
+@media (max-width: 900px) {
+  .intro-experience-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding: 64px 28px 36px;
+  }
+
+  #introduction.intro-experience-layout .intro-highlight {
+    height: auto;
+  }
+
+  #experience.experience-section {
+    padding: 0;
+  }
+}
+
 @media (max-width: 760px) {
-  #introduction.intro-expertise-layout {
+  .intro-experience-layout {
+    gap: 32px;
+    padding: 52px 21px 30px;
+  }
+
+  .expertise-section {
+    padding: 34px 0 64px;
+  }
+
+  .expertise-section > .section-intro {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+  .expertise-grid {
+    animation-duration: 36s;
+  }
+
+  .expertise-group {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .expertise-card {
+    min-height: 60px;
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-grid {
+    animation: marqueeScroll 40s linear infinite reverse !important;
+    transform: none !important;
+  }
+
+  .project-group[aria-hidden="true"] {
+    display: flex;
+  }
+
+  #home .neon-border-wrapper {
+    animation: avatarFloat 5s ease-in-out infinite, avatarGlow 4s ease-in-out infinite alternate !important;
+  }
+
+  #home .neon-border-wrapper::before {
+    animation: orbitSpin 18s linear infinite !important;
+  }
+
+  .expertise-grid {
+    animation-duration: 36s !important;
+    animation-iteration-count: infinite !important;
+  }
+
+  .intro-highlight,
+  .intro-highlight::after,
+  .experience-card {
+    animation-duration: 9s !important;
+    animation-iteration-count: infinite !important;
+  }
+
+  .experience-card {
+    animation-duration: 10s !important;
+  }
+
+  .cert-grid {
+    animation: marqueeScroll 40s linear infinite reverse !important;
+    transform: none !important;
+  }
+
+  .cert-group[aria-hidden="true"] {
+    display: flex;
+  }
+}
+
+@media (max-width: 760px) {
+  #introduction.intro-experience-layout {
     padding: 64px 21px 76px;
   }
 }
