@@ -47,6 +47,13 @@ if (certificationGrid) {
   appendAccessibleMarqueeClone(certificationGrid, certificationGroup);
 }
 
+const expertiseGrid = document.querySelector('.expertise-grid');
+const expertiseGroup = expertiseGrid?.querySelector('.expertise-group');
+
+if (expertiseGrid && expertiseGroup) {
+  appendAccessibleMarqueeClone(expertiseGrid, expertiseGroup);
+}
+
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
